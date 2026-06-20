@@ -16,13 +16,13 @@ document.addEventListener('DOMContentLoaded', () => {
    COUNTDOWN TIMER
    ============================================ */
 function initCountdown() {
-    const daysEl    = document.getElementById('days');
-    const hoursEl   = document.getElementById('hours');
+    const daysEl = document.getElementById('days');
+    const hoursEl = document.getElementById('hours');
     const minutesEl = document.getElementById('minutes');
     const secondsEl = document.getElementById('seconds');
-    const countdownEl   = document.getElementById('countdown');
-    const birthdayMsg   = document.getElementById('birthday-msg');
-    const labelEl       = document.getElementById('countdown-label');
+    const countdownEl = document.getElementById('countdown');
+    const birthdayMsg = document.getElementById('birthday-msg');
+    const labelEl = document.getElementById('countdown-label');
 
     function getBirthdayDate() {
         const now = new Date();
@@ -35,9 +35,9 @@ function initCountdown() {
     }
 
     function updateCountdown() {
-        const now      = new Date();
+        const now = new Date();
         const birthday = getBirthdayDate();
-        const diff     = birthday - now;
+        const diff = birthday - now;
 
         // It's her birthday!
         if (now.getMonth() === 5 && now.getDate() === 22) {
@@ -54,13 +54,13 @@ function initCountdown() {
             return;
         }
 
-        const days    = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours   = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        animateNumber(daysEl,    days);
-        animateNumber(hoursEl,   hours);
+        animateNumber(daysEl, days);
+        animateNumber(hoursEl, hours);
         animateNumber(minutesEl, minutes);
         animateNumber(secondsEl, seconds);
     }
@@ -83,24 +83,24 @@ function initCountdown() {
    ============================================ */
 function initPetals() {
     const container = document.getElementById('petals-container');
-    const petals    = ['🌸', '🌷', '✿', '❀', '🌺', '✦', '·', '∘'];
+    const petals = ['🌸', '🌷', '✿', '❀', '🌺', '✦', '·', '∘'];
 
     function createPetal() {
         const petal = document.createElement('div');
         petal.classList.add('petal');
         petal.textContent = petals[Math.floor(Math.random() * petals.length)];
 
-        const leftPos  = Math.random() * 100;
+        const leftPos = Math.random() * 100;
         const duration = Math.random() * 12 + 10; // 10–22s
-        const delay    = Math.random() * 8;
-        const sway     = (Math.random() - 0.5) * 120;
+        const delay = Math.random() * 8;
+        const sway = (Math.random() - 0.5) * 120;
 
         petal.style.left = `${leftPos}%`;
-        petal.style.setProperty('--dur',   `${duration}s`);
+        petal.style.setProperty('--dur', `${duration}s`);
         petal.style.setProperty('--delay', `${delay}s`);
-        petal.style.setProperty('--sway',  `${sway}px`);
+        petal.style.setProperty('--sway', `${sway}px`);
         petal.style.fontSize = `${Math.random() * 0.8 + 0.7}rem`;
-        petal.style.opacity  = String(Math.random() * 0.3 + 0.1);
+        petal.style.opacity = String(Math.random() * 0.3 + 0.1);
 
         container.appendChild(petal);
 
@@ -154,10 +154,10 @@ let confettiCanvas, confettiCtx;
 
 function initConfetti() {
     confettiCanvas = document.getElementById('confetti-canvas');
-    confettiCtx    = confettiCanvas.getContext('2d');
+    confettiCtx = confettiCanvas.getContext('2d');
 
     function resize() {
-        confettiCanvas.width  = window.innerWidth;
+        confettiCanvas.width = window.innerWidth;
         confettiCanvas.height = window.innerHeight;
     }
     resize();
@@ -172,10 +172,10 @@ function initConfetti() {
         confettiPieces = confettiPieces.filter(c => c.opacity > 0 && c.y < confettiCanvas.height + 50);
 
         confettiPieces.forEach(c => {
-            c.x       += c.vx + Math.sin(c.y * 0.012) * 0.4;
-            c.y       += c.vy;
-            c.vy      += 0.025; // gravity
-            c.rot     += c.rotV;
+            c.x += c.vx + Math.sin(c.y * 0.012) * 0.4;
+            c.y += c.vy;
+            c.vy += 0.025; // gravity
+            c.rot += c.rotV;
             c.opacity -= 0.0025;
 
             confettiCtx.save();
@@ -205,7 +205,7 @@ function initConfetti() {
 }
 
 function drawStar(ctx, cx, cy, spikes, outer, inner, color) {
-    let rot  = (Math.PI / 2) * 3;
+    let rot = (Math.PI / 2) * 3;
     const step = Math.PI / spikes;
     ctx.beginPath();
     ctx.moveTo(cx, cy - outer);
@@ -233,16 +233,16 @@ function launchConfetti(count = 100) {
     for (let i = 0; i < count; i++) {
         const shape = shapes[Math.floor(Math.random() * shapes.length)];
         confettiPieces.push({
-            x:     confettiCanvas.width / 2 + (Math.random() - 0.5) * confettiCanvas.width * 0.7,
-            y:     -20 - Math.random() * 100,
-            w:     Math.random() * 11 + 4,
-            h:     Math.random() * 7  + 3,
-            size:  Math.random() * 6  + 3,
+            x: confettiCanvas.width / 2 + (Math.random() - 0.5) * confettiCanvas.width * 0.7,
+            y: -20 - Math.random() * 100,
+            w: Math.random() * 11 + 4,
+            h: Math.random() * 7 + 3,
+            size: Math.random() * 6 + 3,
             color: colors[Math.floor(Math.random() * colors.length)],
-            vx:    (Math.random() - 0.5) * 7,
-            vy:    Math.random() * 3 + 1,
-            rot:   Math.random() * Math.PI * 2,
-            rotV:  (Math.random() - 0.5) * 0.18,
+            vx: (Math.random() - 0.5) * 7,
+            vy: Math.random() * 3 + 1,
+            rot: Math.random() * Math.PI * 2,
+            rotV: (Math.random() - 0.5) * 0.18,
             opacity: 1,
             shape
         });
@@ -255,16 +255,16 @@ function spawnConfettiAt(x, y) {
     for (let i = 0; i < 18; i++) {
         confettiPieces.push({
             x, y,
-            w: Math.random() * 8  + 3,
-            h: Math.random() * 5  + 2,
-            size:    Math.random() * 5  + 2,
-            color:   colors[Math.floor(Math.random() * colors.length)],
-            vx:      (Math.random() - 0.5) * 10,
-            vy:      -(Math.random() * 5 + 3),
-            rot:     Math.random() * Math.PI * 2,
-            rotV:    (Math.random() - 0.5) * 0.3,
+            w: Math.random() * 8 + 3,
+            h: Math.random() * 5 + 2,
+            size: Math.random() * 5 + 2,
+            color: colors[Math.floor(Math.random() * colors.length)],
+            vx: (Math.random() - 0.5) * 10,
+            vy: -(Math.random() * 5 + 3),
+            rot: Math.random() * Math.PI * 2,
+            rotV: (Math.random() - 0.5) * 0.3,
             opacity: 1,
-            shape:   ['rect', 'circle', 'star'][Math.floor(Math.random() * 3)]
+            shape: ['rect', 'circle', 'star'][Math.floor(Math.random() * 3)]
         });
     }
 }
@@ -309,7 +309,7 @@ function initScrollAnimations() {
    MUSIC TOGGLE 🎵
    ============================================ */
 function initMusicToggle() {
-    const btn   = document.getElementById('music-toggle');
+    const btn = document.getElementById('music-toggle');
     const audio = document.getElementById('bg-music');
     const label = btn.querySelector('.music-label');
     let playing = false;
@@ -339,9 +339,14 @@ function initMusicToggle() {
    CAROUSEL SYSTEM
    ============================================ */
 function initCarousels() {
-    new Carousel('gallery-carousel',  { slidesVisible: 1 });
-    new Carousel('reasons-carousel',  { slidesPerView: { default: 3, 900: 2, 600: 1 } });
-    new Carousel('wishes-carousel',   { slidesPerView: { default: 3, 900: 2, 600: 1 } });
+    // Delay initialization until after first paint so getBoundingClientRect works
+    requestAnimationFrame(() => {
+        setTimeout(() => {
+            new Carousel('gallery-carousel', { slidesVisible: 1, autoPlay: true });
+            new Carousel('reasons-carousel', { slidesPerView: { default: 3, 900: 2, 600: 1 } });
+            new Carousel('wishes-carousel', { slidesPerView: { default: 3, 900: 2, 600: 1 } });
+        }, 100);
+    });
 }
 
 class Carousel {
@@ -349,24 +354,24 @@ class Carousel {
         this.container = document.getElementById(containerId);
         if (!this.container) return;
 
-        this.viewport  = this.container.querySelector('.carousel-viewport');
-        this.track     = this.container.querySelector('.carousel-track');
-        this.slides    = Array.from(this.container.querySelectorAll('.carousel-slide'));
-        this.prevBtn   = this.container.querySelector('.carousel-nav.prev');
-        this.nextBtn   = this.container.querySelector('.carousel-nav.next');
-        this.dotsWrap  = this.container.querySelector('.carousel-dots');
+        this.viewport = this.container.querySelector('.carousel-viewport');
+        this.track = this.container.querySelector('.carousel-track');
+        this.slides = Array.from(this.container.querySelectorAll('.carousel-slide'));
+        this.prevBtn = this.container.querySelector('.carousel-nav.prev');
+        this.nextBtn = this.container.querySelector('.carousel-nav.next');
+        this.dotsWrap = this.container.querySelector('.carousel-dots');
 
-        this.options       = options;
-        this.currentIndex  = 0;
-        this.slideWidth    = 0;
+        this.options = options;
+        this.currentIndex = 0;
+        this.slideWidth = 0;
         this.slidesVisible = 1;
-        this.isDragging    = false;
-        this.startX        = 0;
-        this.currentTX     = 0;
-        this.dragDelta     = 0;
+        this.isDragging = false;
+        this.startX = 0;
+        this.currentTX = 0;
+        this.dragDelta = 0;
 
-        // Auto-advance for photo gallery
-        this.autoPlay = containerId === 'gallery-carousel';
+        // Auto-advance: can be set via options or defaults to gallery
+        this.autoPlay = options.autoPlay || containerId === 'gallery-carousel';
         this.autoTimer = null;
 
         this.init();
@@ -382,20 +387,33 @@ class Carousel {
             this.nextBtn.addEventListener('click', e => { e.stopPropagation(); this.next(); this.resetAuto(); });
         }
 
+        // Re-measure on resize
+        let resizeTimer;
         window.addEventListener('resize', () => {
-            const saved = this.currentIndex;
-            this.updateLayout();
-            this.goTo(Math.min(saved, this.slides.length - this.slidesVisible), false);
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                const saved = this.currentIndex;
+                this.updateLayout();
+                this.goTo(Math.min(saved, Math.max(0, this.slides.length - this.slidesVisible)), false);
+            }, 100);
         });
 
-        // Drag events
-        this.viewport.addEventListener('mousedown',  e  => this.dragStart(e));
-        window.addEventListener('mousemove',         e  => this.dragMove(e));
-        window.addEventListener('mouseup',           () => this.dragEnd());
+        // Also observe viewport size changes (handles font-load reflows etc.)
+        if (window.ResizeObserver) {
+            new ResizeObserver(() => {
+                this.measureSlideWidth();
+                this.goTo(this.currentIndex, false);
+            }).observe(this.viewport);
+        }
 
-        this.viewport.addEventListener('touchstart', e  => this.dragStart(e), { passive: true });
-        this.viewport.addEventListener('touchmove',  e  => this.dragMove(e),  { passive: true });
-        this.viewport.addEventListener('touchend',   () => this.dragEnd());
+        // Drag events
+        this.viewport.addEventListener('mousedown', e => this.dragStart(e));
+        window.addEventListener('mousemove', e => this.dragMove(e));
+        window.addEventListener('mouseup', () => this.dragEnd());
+
+        this.viewport.addEventListener('touchstart', e => this.dragStart(e), { passive: true });
+        this.viewport.addEventListener('touchmove', e => this.dragMove(e), { passive: true });
+        this.viewport.addEventListener('touchend', () => this.dragEnd());
 
         this.track.querySelectorAll('img').forEach(img => {
             img.addEventListener('dragstart', e => e.preventDefault());
@@ -424,6 +442,13 @@ class Carousel {
         return result;
     }
 
+    measureSlideWidth() {
+        if (!this.slides.length) return;
+        this.viewport.offsetWidth; // force reflow
+        const rect = this.slides[0].getBoundingClientRect();
+        if (rect.width > 0) this.slideWidth = rect.width;
+    }
+
     updateLayout() {
         if (!this.slides.length) return;
 
@@ -436,10 +461,7 @@ class Carousel {
             s.style.flexShrink = '0';
         });
 
-        // Force reflow then measure
-        this.viewport.offsetWidth;
-        this.slideWidth = this.slides[0].getBoundingClientRect().width;
-
+        this.measureSlideWidth();
         this.buildDots();
         this.goTo(this.currentIndex, false);
     }
@@ -503,9 +525,9 @@ class Carousel {
 
     dragStart(e) {
         this.isDragging = true;
-        this.startX     = e.pageX ?? e.touches?.[0]?.pageX ?? 0;
-        this.currentTX  = -this.currentIndex * this.slideWidth;
-        this.dragDelta  = 0;
+        this.startX = e.pageX ?? e.touches?.[0]?.pageX ?? 0;
+        this.currentTX = -this.currentIndex * this.slideWidth;
+        this.dragDelta = 0;
         this.track.style.transition = 'none';
     }
 
@@ -531,9 +553,9 @@ class Carousel {
         this.track.style.transition = '';
 
         const threshold = this.slideWidth * 0.15;
-        if      (this.dragDelta < -threshold) this.next();
-        else if (this.dragDelta >  threshold) this.prev();
-        else    this.goTo(this.currentIndex);
+        if (this.dragDelta < -threshold) this.next();
+        else if (this.dragDelta > threshold) this.prev();
+        else this.goTo(this.currentIndex);
 
         this.resetAuto();
     }
