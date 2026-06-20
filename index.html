@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎂 Happy Birthday Bree! — White Edition</title>
+    <meta name="description" content="A beautiful birthday celebration for Brenda Njuki (Bree) — June 22nd!">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Dancing+Script:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Floating Petals Container -->
+    <div id="petals-container"></div>
+
+    <!-- Confetti Canvas -->
+    <canvas id="confetti-canvas"></canvas>
+
+    <!-- Music Button -->
+    <button id="music-toggle" class="music-btn" title="Toggle Music">
+        <span class="music-icon">🎵</span>
+        <span class="music-label">Play Music</span>
+    </button>
+    <audio id="bg-music" loop>
+        <source src="Miguel_-_Adorn_Offblogmedia.com.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section id="hero" class="hero-section">
+        <div class="hero-bg-decor">
+            <div class="decor-ring decor-ring-1"></div>
+            <div class="decor-ring decor-ring-2"></div>
+            <div class="decor-ring decor-ring-3"></div>
+            <div class="decor-dots"></div>
+        </div>
+
+        <div class="hero-content">
+            <p class="hero-eyebrow animate-fade-up">✦ A Celebration for Someone Special ✦</p>
+
+            <h1 class="hero-title animate-fade-up delay-1">
+                Happy Birthday,<br>
+                <span class="name-script">Bree!</span>
+            </h1>
+
+            <div class="hero-cake animate-fade-up delay-2" id="birthday-cake">
+                <div class="cake-container" onclick="blowCandles()">
+                    <div class="candle-group">
+                        <div class="candle">
+                            <div class="flame" id="flame1">🔥</div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame2">🔥</div>
+                        </div>
+                        <div class="candle">
+                            <div class="flame" id="flame3">🔥</div>
+                        </div>
+                    </div>
+                    <div class="cake-emoji">🎂</div>
+                    <p class="cake-hint">✨ Click to make a wish! ✨</p>
+                </div>
+            </div>
+
+            <p class="hero-subtitle animate-fade-up delay-2">Brenda Njuki · June 22nd</p>
+
+            <!-- Countdown Timer -->
+            <div class="countdown-wrapper animate-fade-up delay-3">
+                <p class="countdown-label" id="countdown-label">Counting down to your special day ✨</p>
+                <div class="countdown-timer" id="countdown">
+                    <div class="countdown-cell">
+                        <span class="countdown-number" id="days">00</span>
+                        <span class="countdown-unit">Days</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-cell">
+                        <span class="countdown-number" id="hours">00</span>
+                        <span class="countdown-unit">Hours</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-cell">
+                        <span class="countdown-number" id="minutes">00</span>
+                        <span class="countdown-unit">Mins</span>
+                    </div>
+                    <div class="countdown-sep">:</div>
+                    <div class="countdown-cell">
+                        <span class="countdown-number" id="seconds">00</span>
+                        <span class="countdown-unit">Secs</span>
+                    </div>
+                </div>
+                <div class="birthday-today-msg" id="birthday-msg" style="display:none;">
+                    🥳🎉 IT'S YOUR BIRTHDAY BREE!! 🎉🥳
+                </div>
+            </div>
+
+            <a href="#gallery" class="scroll-btn animate-fade-up delay-4">
+                <span>Explore the Celebration</span>
+                <div class="scroll-arrow">↓</div>
+            </a>
+        </div>
+    </section>
+
+    <!-- ============ PHOTO GALLERY SECTION ============ -->
+    <section id="gallery" class="gallery-section">
+        <div class="section-header reveal">
+            <p class="section-tag">📸 Captured Moments</p>
+            <h2 class="section-title">Beautiful Memories</h2>
+            <p class="section-subtitle">Every picture tells a story of joy, laughter, and love</p>
+        </div>
+
+        <div class="carousel-container" id="gallery-carousel">
+            <div class="carousel-viewport">
+                <div class="photo-carousel carousel-track">
+                    <div class="photo-slide carousel-slide">
+                        <div class="photo-frame">
+                            <div class="photo-img-wrapper">
+                                <img src="photos/IMG-20250828-WA0065.jpg" alt="Bree - Memory 1" class="photo-img"
+                                    onerror="this.parentElement.classList.add('placeholder')">
+                                <div class="photo-placeholder"><span>📷</span></div>
+                            </div>
+                            <div class="photo-caption">Always Glowing ✨</div>
+                        </div>
+                    </div>
+                    <div class="photo-slide carousel-slide">
+                        <div class="photo-frame">
+                            <div class="photo-img-wrapper">
+                                <img src="photos/IMG-20250824-WA0040.jpg" alt="Bree - Memory 2" class="photo-img"
+                                    onerror="this.parentElement.classList.add('placeholder')">
+                                <div class="photo-placeholder"><span>📷</span></div>
+                            </div>
+                            <div class="photo-caption">Main character energy 😎</div>
+                        </div>
+                    </div>
+                    <div class="photo-slide carousel-slide">
+                        <div class="photo-frame">
+                            <div class="photo-img-wrapper">
+                                <img src="photos/IMG-20260502-WA0029.jpg" alt="Bree - Memory 3" class="photo-img"
+                                    onerror="this.parentElement.classList.add('placeholder')">
+                                <div class="photo-placeholder"><span>📷</span></div>
+                            </div>
+                            <div class="photo-caption">Cuteness overload 🥺💕</div>
+                        </div>
+                    </div>
+                    <div class="photo-slide carousel-slide">
+                        <div class="photo-frame">
+                            <div class="photo-img-wrapper">
+                                <img src="photos/IMG-20260502-WA0033.jpg" alt="Bree - Memory 4" class="photo-img"
+                                    onerror="this.parentElement.classList.add('placeholder')">
+                                <div class="photo-placeholder"><span>📷</span></div>
+                            </div>
+                            <div class="photo-caption">Pure Joy 😍</div>
+                        </div>
+                    </div>
+                    <div class="photo-slide carousel-slide">
+                        <div class="photo-frame">
+                            <div class="photo-img-wrapper">
+                                <img src="photos/IMG-20260502-WA0043.jpg" alt="Bree - Memory 5" class="photo-img"
+                                    onerror="this.parentElement.classList.add('placeholder')">
+                                <div class="photo-placeholder"><span>📷</span></div>
+                            </div>
+                            <div class="photo-caption">Queen behavior 👑</div>
+                        </div>
+                    </div>
+                    <div class="photo-slide carousel-slide">
+                        <div class="photo-frame">
+                            <div class="photo-img-wrapper">
+                                <img src="photos/IMG-20260413-WA0031.jpg" alt="Bree - Memory 6" class="photo-img"
+                                    onerror="this.parentElement.classList.add('placeholder')">
+                                <div class="photo-placeholder"><span>📷</span></div>
+                            </div>
+                            <div class="photo-caption">My favourite smile 😁</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-nav prev" aria-label="Previous Slide">‹</button>
+            <button class="carousel-nav next" aria-label="Next Slide">›</button>
+            <div class="carousel-dots"></div>
+        </div>
+    </section>
+
+    <!-- ============ REASONS SECTION ============ -->
+    <section id="reasons" class="reasons-section">
+        <div class="section-header reveal">
+            <p class="section-tag">💝 Just a Few Reasons</p>
+            <h2 class="section-title">Why You're The Best!</h2>
+            <p class="section-subtitle">There are wayyy more, but here's a start 😁</p>
+        </div>
+
+        <div class="carousel-container" id="reasons-carousel">
+            <div class="carousel-viewport">
+                <div class="reasons-track carousel-track">
+                    <div class="reason-slide carousel-slide">
+                        <div class="reason-card" style="--accent: #E8A2B8;">
+                            <div class="reason-number">01</div>
+                            <div class="reason-emoji">😊</div>
+                            <p class="reason-text">Your smile literally makes everyone's day better. It's unfair
+                                honestly😤💕. Tuambie siri😂</p>
+                        </div>
+                    </div>
+                    <div class="reason-slide carousel-slide">
+                        <div class="reason-card" style="--accent: #F2C94C;">
+                            <div class="reason-number">02</div>
+                            <div class="reason-emoji">🤗</div>
+                            <p class="reason-text">You have the biggest heart. Always caring about everyone around
+                                you 🥹</p>
+                        </div>
+                    </div>
+                    <div class="reason-slide carousel-slide">
+                        <div class="reason-card" style="--accent: #6FCF97;">
+                            <div class="reason-number">03</div>
+                            <div class="reason-emoji">💪</div>
+                            <p class="reason-text">Your strength is inspiring. After everything you've been through,
+                                you are still standing stronger than ever 👏</p>
+                        </div>
+                    </div>
+                    <div class="reason-slide carousel-slide">
+                        <div class="reason-card" style="--accent: #56CCF2;">
+                            <div class="reason-number">04</div>
+                            <div class="reason-emoji">🧠</div>
+                            <p class="reason-text">You're so smart. I love how you view things and how you solve
+                                problems. Our conversations are my favourite 😁</p>
+                        </div>
+                    </div>
+                    <div class="reason-slide carousel-slide">
+                        <div class="reason-card" style="--accent: #BB6BD9;">
+                            <div class="reason-number">05</div>
+                            <div class="reason-emoji">🌟</div>
+                            <p class="reason-text">You shine so bright without even trying. Even during the days you
+                                don't feel like it. You're just naturally amazing ✨</p>
+                        </div>
+                    </div>
+                    <div class="reason-slide carousel-slide">
+                        <div class="reason-card" style="--accent: #F2994A;">
+                            <div class="reason-number">06</div>
+                            <div class="reason-emoji">🦋</div>
+                            <p class="reason-text">The way you keep growing and always striving to become the best
+                                version of yourself is just incredible 💯</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-nav prev" aria-label="Previous Slide">‹</button>
+            <button class="carousel-nav next" aria-label="Next Slide">›</button>
+            <div class="carousel-dots"></div>
+        </div>
+    </section>
+
+    <!-- ============ MESSAGE SECTION ============ -->
+    <section id="message" class="message-section">
+        <div class="message-container reveal">
+            <div class="section-header">
+                <p class="section-tag">💌 From the Heart</p>
+                <h2 class="section-title">A Little Something for You</h2>
+            </div>
+
+            <div class="letter-card">
+                <div class="letter-flourish-top">✦ ✦ ✦</div>
+                <div class="letter-content">
+                    <p class="letter-greeting">Hey Bree!! 🥳</p>
+
+                    <p>
+                        Sooo it's your BIRTHDAY and I just had to do this because you
+                        deserve it!! 🎂🎉 You are literally one of the most amazing people I know
+                        and I'm so grateful to have you in my life.
+                    </p>
+
+                    <p>
+                        You bring so much joy and warmth to everyone around you. Your energy is
+                        unmatched, your vibe is immaculate, and honestly.....The world is so much
+                        better with you in it! 🌍💖
+                    </p>
+
+                    <p>
+                        This new year of your life is going to be INCREDIBLE, I can already feel it! The past year has
+                        been full of ups and downs but at the end of the day here you are... still standing strong.
+                        So as you begin your 23rd year in this world, I want to wish you more blessings, more wins,
+                        more
+                        adventures, and more reasons to smile.
+                        You deserve ALL the good things coming your way! 🚀✨
+                    </p>
+
+                    <p>
+                        Never stop being your amazing, beautiful, and wonderful self.
+                        I'm always rooting for you, always cheering you on, and always
+                        here for you. I'll always be by your side even if the whole world is against you.😉😁🫂🫂
+                    </p>
+
+                    <p class="letter-closing">
+                        HAPPY BIRTHDAY BRENDA NYAGITHA NJUKI!! 🎂🥳🎈🎁<br>
+                        Let's make this year the best one yet!! 🎉
+                    </p>
+
+                    <p class="letter-signature">
+                        Lots of love ❤️❤️
+                    </p>
+                </div>
+                <div class="letter-flourish-bottom">✦ ✦ ✦</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ BIRTHDAY WISHES SECTION ============ -->
+    <section id="wishes" class="wishes-section">
+        <div class="section-header reveal">
+            <p class="section-tag">🎁 Birthday Wishes</p>
+            <h2 class="section-title">All the Good Things 🌈</h2>
+            <p class="section-subtitle">Sending you allll the good vibes ✨</p>
+        </div>
+
+        <div class="carousel-container" id="wishes-carousel">
+            <div class="carousel-viewport">
+                <div class="wishes-track carousel-track">
+                    <div class="wish-slide carousel-slide">
+                        <div class="wish-card" style="--wish-accent: #E8A2B8;">
+                            <div class="wish-icon">🌟</div>
+                            <h3 class="wish-title">Endless Joy</h3>
+                            <p class="wish-text">May your year be as bright and beautiful as your smile!</p>
+                        </div>
+                    </div>
+                    <div class="wish-slide carousel-slide">
+                        <div class="wish-card" style="--wish-accent: #BB6BD9;">
+                            <div class="wish-icon">🚀</div>
+                            <h3 class="wish-title">Beyond the Sky</h3>
+                            <p class="wish-text">Sky is NOT the limit for you — go beyond!!</p>
+                        </div>
+                    </div>
+                    <div class="wish-slide carousel-slide">
+                        <div class="wish-card" style="--wish-accent: #F2C94C;">
+                            <div class="wish-icon">💕</div>
+                            <h3 class="wish-title">Love All Around</h3>
+                            <p class="wish-text">Wishing you endless love, laughter, and happiness!</p>
+                        </div>
+                    </div>
+                    <div class="wish-slide carousel-slide">
+                        <div class="wish-card" style="--wish-accent: #56CCF2;">
+                            <div class="wish-icon">🌈</div>
+                            <h3 class="wish-title">Beautiful Days</h3>
+                            <p class="wish-text">May every day feel like a rainbow after the rain!</p>
+                        </div>
+                    </div>
+                    <div class="wish-slide carousel-slide">
+                        <div class="wish-card" style="--wish-accent: #6FCF97;">
+                            <div class="wish-icon">🎯</div>
+                            <h3 class="wish-title">Goals Crushed</h3>
+                            <p class="wish-text">Every goal you set? CRUSHED. Every dream? ACHIEVED. 💪</p>
+                        </div>
+                    </div>
+                    <div class="wish-slide carousel-slide">
+                        <div class="wish-card" style="--wish-accent: #F2994A;">
+                            <div class="wish-icon">👑</div>
+                            <h3 class="wish-title">Queen Energy</h3>
+                            <p class="wish-text">Keep being the queen you are — the crown looks amazing on you!</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-nav prev" aria-label="Previous Slide">‹</button>
+            <button class="carousel-nav next" aria-label="Next Slide">›</button>
+            <div class="carousel-dots"></div>
+        </div>
+    </section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-divider"></div>
+            <p class="footer-emojis">🎂 🎈 🎁 🥳 🎉 🌟 💕 🎀</p>
+            <p class="footer-text">Made with a whole lot of 💕 just for Bree!</p>
+            <p class="footer-year">Happy Birthday 2026 🎂</p>
+            <button class="confetti-btn" id="confetti-trigger" onclick="launchConfetti(200)">
+                🎊 Celebrate! 🎊
+            </button>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
