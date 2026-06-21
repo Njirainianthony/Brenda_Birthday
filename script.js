@@ -4,9 +4,9 @@
    ============================================ */
 
 document.addEventListener('DOMContentLoaded', () => {
+    initConfetti();
     initCountdown();
     initPetals();
-    initConfetti();
     initScrollAnimations();
     initMusicToggle();
     initCarousels();
@@ -343,8 +343,6 @@ function initCarousels() {
     requestAnimationFrame(() => {
         setTimeout(() => {
             new Carousel('gallery-carousel', { slidesVisible: 1, autoPlay: true });
-            new Carousel('reasons-carousel', { slidesPerView: { default: 3, 900: 2, 600: 1 } });
-            new Carousel('wishes-carousel', { slidesPerView: { default: 3, 900: 2, 600: 1 } });
         }, 100);
     });
 }
